@@ -1,6 +1,6 @@
 import Id from '../ValueObjects/Id';
 
-export default class MessageRequest {
+export default class ConversationRequest {
   id: Id;
   conversationId: Id;
   userId: Id;
