@@ -1,10 +1,10 @@
-import MessageRequest from '../models/MessageRequest';
+import ConversationRequest from '../models/ConversationRequest';
 import Id from '../ValueObjects/Id';
 
 export default interface MessageRequestRepository {
-  get(id: Id): Promise<MessageRequest>
-  save(messageRequest: MessageRequest): Promise<MessageRequest>;
-  update(messageRequest: MessageRequest): Promise<MessageRequest>;
-  list(): Promise<MessageRequest[]>
+  get(id: Id): Promise<ConversationRequest>
+  save(messageRequest: ConversationRequest): Promise<ConversationRequest>;
+  update(messageRequest: ConversationRequest): Promise<ConversationRequest>;
+  list(): Promise<ConversationRequest[]>
   delete(id: Id): Promise<void>;
 }
