@@ -3,12 +3,16 @@ import ValueError from '../errors/ValueError';
 export default class Password {
   value: string;
 
-  constructor(passwordString: string) {
+  constructor(passwordString: string, options = { withoutHash: false }) {
     if (passwordString.length < 5) {
       throw new ValueError(`${ValueError.MESSAGES.DEFAULT_ERROR}: Password should be at least 5 characters`);
     }
  
-    this.value = this.generateHash(passwordString);
+    if (!options.withoutHash) {
+      this.value = this.generateHash(passwordString);
+    } else {
+      this.value = passwordString;
+    }
   }
 
   private generateHash(str: string): string {

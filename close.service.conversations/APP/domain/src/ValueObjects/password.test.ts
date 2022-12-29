@@ -30,4 +30,12 @@ describe('Password instance', () => {
 
     expect(password).toEqual(password2)
   });
+
+  test('It should de-serialize password string', () => {
+    const passwordString = 'abcd1234567xyz';
+
+    const password = new Password(passwordString, { withoutHash: true }).value;
+
+    expect(password).toEqual(passwordString);
+  })
 });

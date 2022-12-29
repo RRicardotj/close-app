@@ -5,11 +5,12 @@ class Id {
   value: string;
 
   constructor(plainId: string) {
-    this.value = plainId;
-
     if (plainId.length < 10) {
       throw new ValueError(`${ValueError.MESSAGES.DEFAULT_ERROR}: ID`)
     }
+  
+    this.value = plainId;
+
   }
 
   static create() {

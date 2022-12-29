@@ -22,4 +22,18 @@ describe('Message model instance', () => {
 
     expect(message).toBeInstanceOf(Message);
   });
+
+  test('It should create an instance from JSON object with .parseFromJson static method', () => {
+    const jsonObject = {
+      id: '123455667788990',
+      ownerId: '12345512312435',
+      conversationId:  '87891239123123',
+      createdAt: '2022-12-07T06:48:43.992Z',
+      content: 'Encrypted content from frontend',
+    };
+  
+    const message = Message.parseFromJson(jsonObject);
+
+    expect(message).toBeInstanceOf(Message);
+  });
 });

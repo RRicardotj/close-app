@@ -28,7 +28,7 @@ class Message {
       id?: string,
       createdAt?: Date
     }
-    ) {
+    ) : Message {
       const { id, ownerId, content, conversationId, createdAt } = params;
       const messageId = id && new Id(id) || Id.create();
       const date = createdAt || new Date();
@@ -36,6 +36,18 @@ class Message {
       const message = new Message(messageId, conversationId, ownerId, content, date);
 
       return message;
+  }
+
+  static parseFromJson(jsonObject: { id: string, ownerId: string, content: string, conversationId: string, createdAt: string }) : Message {
+    const id = new Id(jsonObject.id);
+    const ownerId = new Id(jsonObject.ownerId);
+    const { content } = jsonObject;
+    const conversationId = new Id(jsonObject.conversationId);
+    const createdAt = new Date(jsonObject.createdAt);
+
+    const message = new Message(id, conversationId, ownerId, content, createdAt);
+
+    return message;
   }
 }
 
